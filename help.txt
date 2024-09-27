@@ -1,0 +1,29 @@
+帮助文档
+
+[关于数据存档文件]
+位置: ~/task_data
+格式: {id:x,name:"xx",info:"xx",ddl:xx.xx,pri:xx,done:xx};
+- ddl为小数形式，例如 2024年9月30日下午2:30截止，ddl写作 240930.1430，用24小时制
+- ddl 为 1e9 时，表示这个没有 ddl，显示时会显示 "none"
+- done 用 t/f 表示是否已完成，显示时会显示 yes/no，pri 可以任意指定一个 1~99 内的数，
+- name和info必须有分号，否则报错
+- 存档文件中，这是自动生成的，和用户写的格式是一样的
+- 新建或修改任务时，每一项都不是必要的，没有填写的项会被设置为默认值
+- 默认值: {id:自动分配,name:"noname",info:"",ddl:1e9,pri:1,done:f}
+
+[关于用法]
+
+task 或 task --help - 显示本帮助界面
+task add - 新建任务，输入该命令后，用上述格式输入任务的信息
+task modify [id] - 修改任务信息，同样需要输入命令后再输入
+task count - 查看有多少任务
+task list - 查看所有任务，不显示已完成的，默认不显示 info
+	task list [id] - 查看编号为id的任务
+	task list all  - 也显示已完成的，all 可简写为 a
+	task list detail - 显示info，可简写为d
+	a和d可以同时出现有，下同
+task next - 查看最近的还没完成的任务，可以加上detail参数显示info，加上all参数没用
+task today - 查看今天的任务，按优先级从高到低输出，不显示已完成，可以加上all/detail参数
+task copy [id] - 将编号为id的任务做一个副本
+task find [str] - 查找name或info中包含str子串的，可以加detail，加all没用
+task remove [id1 id2 id3...] - 将编号为id1,id2,id3...的任务删除，可以写很多个id，remove可以简写为rm

@@ -1,0 +1,27 @@
+task 构思
+
+对于一个 task 类，成员变量:
+- id 非用户输入，自定编号
+- name (默认为 "noname")
+- info (默认空)
+- ddl (默认INF, 即无限期)
+- pri (priority 1~10) (默认1)
+- done (t/f) (默认f)
+
+# ddl的格式：例如 2024年10月1日，就写 241001，如果要精确到小时、分钟，用小数表示，例如这天晚上9点10分为 241001.2110
+# 如果要弄一个 “某天去做的事情”，就令 ddl 等于这一天的日期即可
+
+支持:
+- task add [>properties] 新建任务,
+	- 属性的语法如 name:"xxx",info:"xxx",ddl:xxx,pri:xxx,done:x 其中name和info需要加上引号，用逗号隔开
+	- 请勿在内容里写入双引号，请使用单引号
+	- >properties 表示，先写 task add，然后换一行输入 properties，不是直接作为程序的参数（因为这样好做）
+- task modify [id] [>properties] 修改属性
+- task list 查看所有未完成的, list -a 也查看完成的
+- task next 查看最近，时间第一优先，pri第二优先
+- task today 查看今天的，输出所有的，没有就没有
+- task copy [id] 将编号为 [id] 的任务 copy 一份，输出提示信息里提示新copy出的任务的id 
+
+数据存储：存储在 ~/task_data 中，格式：
+对于每个数据：{id:xx,name:"xxx",info:"xxx",...,done:"xxx"};
+即使是最后一个数据，也有分号；严格按照以上顺序写
