@@ -21,9 +21,11 @@ task list - 查看所有任务，不显示已完成的，默认不显示 info
 	task list [id] - 查看编号为id的任务
 	task list all  - 也显示已完成的，all 可简写为 a
 	task list detail - 显示info，可简写为d
-	a和d可以同时出现有，下同
+	task list sort ddl/pri - 按照ddl或pri排序显示
+	这些参数可以同时使用，不冲突
 task next - 查看最近的还没完成的任务，可以加上detail参数显示info，加上all参数没用
 task today - 查看今天的任务，按优先级从高到低输出，不显示已完成，可以加上all/detail参数
+	task today [date] - 指定日期date（格式同上），查看date这天的任务
 task copy [id] - 将编号为id的任务做一个副本
 task find [str] - 查找name或info中包含str子串的，可以加detail，加all没用
 task remove [id1 id2 id3...] - 将编号为id1,id2,id3...的任务删除，可以写很多个id，remove可以简写为rm
